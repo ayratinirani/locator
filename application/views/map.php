@@ -37,25 +37,26 @@
 foreach($points as $point){
 	
 ?>L.marker([<?=$point["lat"]?>, <?=$point["lon"]?>]).addTo(mymap)
-		.bindPopup("<b><?=$point["sender"]?></b><br /> <?=date("Y-m-d H:i:sa",$point["time"])?>.").openPopup();
+		.bindPopup("<b><?=$point["sender"]?></b><br /> <?=date("Y-m-d H:i:s  A",$point["time"])?>.").openPopup();
 		
 		
 <?php		
 		}
 ?>
+//توضیحات
 	L.circle([<?=$center["lat"]?>, <?=$center["lon"]?>], 500, {
 		color: 'red',
 		fillColor: '#f03',
 		fillOpacity: 0.5
 	}).addTo(mymap).bindPopup("I am a circle.");
-
-	L.polygon([
+<!--
+L.polyline([
 	<?php
 	foreach($points as $point){
 		echo "[".$point["lat"].",".$point["lon"]."],";
 		}?>
 	]).addTo(mymap).bindPopup("I am a polygon.");
-
+-->
 
 	var popup = L.popup();
 
@@ -67,7 +68,7 @@ foreach($points as $point){
 	}
 
 	mymap.on('click', onMapClick);
-
+  marker.on("click",onMapClick);
 </script>
 
 <div>

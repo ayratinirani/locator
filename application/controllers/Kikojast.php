@@ -11,7 +11,8 @@ public function __construct (){
 	
 	public function index()
 	{
-		$this->load->view('map');
+		$res=$this->location->get_all();
+		echo json_encode($res);
 	}
 	public function hame (){
 $this->load->model("location");
