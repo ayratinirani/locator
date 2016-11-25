@@ -9,11 +9,12 @@ public function __construct (){
 	}
 
 	
-	public function index()
+	public function index ()
 	{
 		$res=$this->location->get_all();
 		echo json_encode($res);
 	}
+	
 	public function hame (){
 $this->load->model("location");
 	$res=$this->location->get_all();
@@ -21,8 +22,8 @@ $this->load->model("location");
 //$res=array_reverse($res);
 $array=array("points"=>$res);
 	
-	$this->load->view("map",$array);
-	
+	//$this->load->view("map",$array);
+	echo json_encode($res);
 	}
 	public function afz (){
 		$this->load->view("afz");
